@@ -33,10 +33,13 @@ function touchMove(e) {
     y2 = pos.y;
 
 		// Actual drawing.
+    ctx.lineWidth="5";
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
+
+   
 
     x1 = x2;
     y1 = y2;
