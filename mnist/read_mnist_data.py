@@ -52,10 +52,11 @@ summary(model, (1, 28, 28))
 
 from tqdm import tqdm
 
-model.train()
+
 best_acc = 0.
 
 for epoch in range(20):
+    model.train()
     train_loss = 0
     correct = 0
     print(f'Epoch: {epoch}')
@@ -85,6 +86,11 @@ for epoch in range(20):
 
     print('Train Epoch: {} \t Loss: {:.4f} Accuracy: {:.4f}'.format(
         str(epoch+1), train_loss, train_acc))
+    
+    model.eval()
+    dummy_input = torch.zeros((1, 1, 28, 28))
+    torch.onnx.export(model, dummy_input,
+                    f'onnx_model_{epoch+1}.onnx', verbose=True)
     
 		# Put validate function here.
 
