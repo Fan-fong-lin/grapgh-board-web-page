@@ -90,7 +90,7 @@ for epoch in range(20):
     model.eval()
     dummy_input = torch.zeros((1, 1, 28, 28))
     torch.onnx.export(model, dummy_input,
-                     'onnx_model_.onnx', verbose=True)
+                     'onnx_model.onnx', verbose=True)
     
 		# Put validate function here.
 
